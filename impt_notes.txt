@@ -1,0 +1,11 @@
+https://docs.google.com/document/d/1pppBzdboJz38u16GxlM98Q8iGjVGBurkI2aLxFtyxdo/edit?disco=AAAAs-iaj4Q
+
+
+ All the reduce workers should run in parallel. Each reduce worker works on a set of k-v pairs: it processes one k-v pair at a time. So, computations inside a reduce worker are sequential but multiple reduce workers execute in parallel. So, overall, it is a parallel computation.
+
+ Command to compile protobuf
+
+ python -m grpc_tools.protoc -I=. --python_out=. --grpc_python_out=. consistency.proto
+ 
+ Command to kill processes on ports- 
+ pkill -f "map\.py [0-9]"

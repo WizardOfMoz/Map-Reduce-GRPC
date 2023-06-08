@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package consistency;
+
+service Master_Map {
+    rpc getInputData(MapDataRequest) returns (InputData) {}
+    rpc Register(Map) returns (MapRegResponse) {}
+    rpc getR(Void) returns (RValue) {}
+}
+
+service Map_Reduce {
+    rpc getIntermediateData(ReduceDataRequest) returns (IntermediateData) {}
+}
+
+service Master_Reduce {
+    rpc Register(Reduce) returns (ReduceRegResponse) {}
+    rpc getRegisteredMaps(Void) returns (stream Map) {}
+}
+
+service Reduce_Master {
+    rpc getFinalData(Void) returns (FinalData) {}
+}
+
+
+
+message Void{}
+
+message RValue{
+    int64 value = 1;
+}
+
+message InputData{
+    repeated string data = 1;
+    int64 doc_id = 2;
+}
+
+message Map{
+    string address = 1;  
+}
+
+message MapDataRequest{
+    string address = 1;
+    int64 index = 2;
+}
+
+message ReduceDataRequest{
+    int64 index = 1;
+}
+
+message MapRegResponse{
+    bool success = 1;
+    int64 index = 2;
+}
+
+message Reduce{
+    string address = 1;
+}
+
+message ReduceRegResponse{
+    bool success = 1;
+    int64 index = 2;
+}
+
+message IntermediateData{
+    repeated string key = 1;
+    repeated int64 value = 2;
+}
+
+message FinalData{
+    repeated string key = 1;
+    repeated int64 value = 2;
+}
+
+
+

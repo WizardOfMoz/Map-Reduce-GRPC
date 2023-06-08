@@ -1,0 +1,2 @@
+1. Can we universally lowercase the letters and show 
+2. Does a Reducer call the Mapper process for getting the location of the Intermediate Files (IF) or does it ask the master process for this
